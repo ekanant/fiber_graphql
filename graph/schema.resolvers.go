@@ -18,6 +18,11 @@ func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
 	panic(fmt.Errorf("not implemented"))
 }
 
+func (r *queryResolver) Hello(ctx context.Context) (*string, error) {
+	text := "Hello world"
+	return &text, nil
+}
+
 // Mutation returns generated.MutationResolver implementation.
 func (r *Resolver) Mutation() generated.MutationResolver { return &mutationResolver{r} }
 

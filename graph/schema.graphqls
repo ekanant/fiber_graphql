@@ -14,8 +14,10 @@ type User {
   name: String!
 }
 
+# ! means non-nullable
 type Query {
   todos: [Todo!]!
+  hello: String
 }
 
 input NewTodo {
