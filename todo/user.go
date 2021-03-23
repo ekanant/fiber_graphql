@@ -32,3 +32,12 @@ func AddUser(user *User) int {
 	}
 	return 1
 }
+
+func GetUser(id string) *User {
+	for _, u := range userDatas {
+		if u.ID == id {
+			return u
+		}
+	}
+	return nil
+}

@@ -25,6 +25,23 @@ func AddTodo(todo Todo) *Todo {
 	return &todo
 }
 
+func GetTodoByID(id string) *Todo {
+	for _, v := range todoDatas {
+		if id == v.ID {
+			return v
+		}
+	}
+	return nil
+}
+
 func GetAllTodo() []*Todo {
 	return todoDatas
+}
+
+func GetTodoUser(idTodo string) *User {
+	todo := GetTodoByID(idTodo)
+	if todo != nil {
+		return GetUser(todo.IDUser)
+	}
+	return nil
 }
