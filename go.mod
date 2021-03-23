@@ -7,5 +7,6 @@ require (
 	github.com/gofiber/adaptor v0.2.0 // indirect
 	github.com/gofiber/adaptor/v2 v2.1.1
 	github.com/gofiber/fiber/v2 v2.3.3
+	github.com/matoous/go-nanoid/v2 v2.0.0 // indirect
 	github.com/vektah/gqlparser/v2 v2.1.0
 )

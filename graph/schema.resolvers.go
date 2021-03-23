@@ -7,15 +7,39 @@ import (
 	"context"
 	"fiber_graphql/graph/generated"
 	"fiber_graphql/graph/model"
-	"fmt"
+	"fiber_graphql/todo"
 )
 
 func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
-	panic(fmt.Errorf("not implemented"))
+
+	todoToAdd := todo.Todo{
+		Text: input.Text,
+		Done: false,
+	}
+
+	newTodo := todo.AddTodo(todoToAdd)
+
+	todoGraphModel := &model.Todo{
+		ID:   newTodo.ID,
+		Text: newTodo.Text,
+		Done: newTodo.Done,
+	}
+
+	return todoGraphModel, nil
+
 }
 
 func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
-	panic(fmt.Errorf("not implemented"))
+	todoList := todo.GetAllTodo()
+	var todoGraphs []*model.Todo
+	for _, v := range todoList {
+		todoGraphs = append(todoGraphs, &model.Todo{
+			ID:   v.ID,
+			Text: v.Text,
+			Done: v.Done,
+		})
+	}
+	return todoGraphs, nil
 }
 
 func (r *queryResolver) Hello(ctx context.Context) (*string, error) {
